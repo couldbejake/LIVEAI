@@ -8,9 +8,15 @@ import time
 from pydub import AudioSegment
 import re
 
+
 time.sleep(1)
 
+# CONFIGURATION #
+
+SPEECH_GATE_VOLUME = 30
 openai.api_key = "<OPEN AI KEY HERE>"
+
+#################
 
 total_messages = [ 
           {"role": "system", "content": 'Keep your messages short and snappy 200 characters max this is vital for the system to function. We have connected GPT 3.5 and setup speech synthesis and voice recognition. The user is talking to you in real time.'},
@@ -49,6 +55,8 @@ def split_sentences(sentence):
 
 def print_sound(indata, outdata, frames, time, status):
 
+    # probably a better way to do this! OOP!
+
     global sf_obj
     global speech_off
     global recording
@@ -56,9 +64,11 @@ def print_sound(indata, outdata, frames, time, status):
     global _filename
     global _filename_mp3
 
+    global SPEECH_GATE_VOLUME
+
     speech_volume = np.linalg.norm(indata)*10
 
-    if(speech_volume > 40):
+    if(speech_volume > SPEECH_GATE_VOLUME):
 
         speech_off = 0
 
