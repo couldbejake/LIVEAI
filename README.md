@@ -1,5 +1,5 @@
 # LIVEAI
-Real-time ChatGPT audio conversations.
+A 150-line real-time ChatGPT audio conversation script.
 
 A very quick and dirty script programmed, adjusted and tested in *4 hours. You will need to adjust the api_key value, and may need to change the value on line 79; the input volume on line 30.
 
